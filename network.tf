@@ -17,6 +17,17 @@ resource "aws_subnet" "vorx-subnet-pub-1a" {
   }
 }
 
+resource "aws_subnet" "vorx-subnet-pub-1b" {
+  vpc_id     = aws_vpc.vorx_vpc_prod.id
+  cidr_block = "10.0.2.0/24"
+  availability_zone = "us-east-1b"
+
+  tags = {
+    Name = "Public-Subnet-1b"
+  }
+}
+
+
 resource "aws_subnet" "vorx-subnet-priv-1a" {
   vpc_id     = aws_vpc.vorx_vpc_prod.id
   cidr_block = "10.0.10.0/24"
@@ -27,7 +38,15 @@ resource "aws_subnet" "vorx-subnet-priv-1a" {
   }
 }
 
+resource "aws_subnet" "vorx-subnet-priv-1b" {
+  vpc_id     = aws_vpc.vorx_vpc_prod.id
+  cidr_block = "10.0.20.0/24"
+  availability_zone = "us-east-1b"
 
+  tags = {
+    Name = "Private-Subnet-1b"
+  }
+}
 
 ##==== Outputs do Nosso Terraform =======##
 
@@ -40,5 +59,5 @@ value = "aws_vpc.vorx_vpc_prod.arn"
 }
 
 output "vorx_pro_subnets" {
-value = "aws_subnet.[*].id"
+value = "aws_subnet.*.id"
 }
