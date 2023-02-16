@@ -48,6 +48,24 @@ resource "aws_subnet" "vorx-subnet-priv-1b" {
   }
 }
 
+resource "aws_internet_gateway" "gw" {
+  vpc_id = aws_vpc.vorx_vpc_prod.id
+
+  tags = {
+    Name = "igw-prod-vorx-vpc"
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 ##==== Outputs do Nosso Terraform =======##
 
 output "vpc_vorx_id" {
