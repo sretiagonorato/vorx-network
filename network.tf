@@ -2,7 +2,7 @@ resource "aws_vpc" "vorx_vpc_prod" {
   cidr_block       = "10.0.0.0/16"
 
   tags = {
-    Name = "Vorx-PROD"
+    Name = "Vorx-PRODUCAO"
   }
 }
 
@@ -119,7 +119,8 @@ resource "aws_route_table_association" "priv-rt-1b-associate" {
 ##==== Outputs do Nosso Terraform =======##
 
 output "vpc_vorx_id" {
-value = "aws_vpc.vorx_vpc_prod.id"
+#value = "aws_vpc.vorx_vpc_prod.id"
+value = "{aws_vpc.*.id}"
 }
 
 output "vpc_vorx_arn" {
